@@ -1,0 +1,23 @@
+{
+   "title": "Stoke 2015 widget",
+        "docData":"https://interactive.guim.co.uk/docsdata-test/1hKsB4nM_wwqdAIbOzT72SkqvmeJM37dZQds5F64vIqY.json",
+        "path": "2017/02/stoke-2015-results",
+        "previousexamples" : [
+        {
+        "title" : "Copeland byelection",
+        "docData" : "https://interactive.guim.co.uk/docsdata-test/1-XpF9OQ1k_eYx4XLT0JV1K6VtfNurQzEc5oRqjDzQYs.json",
+        "path" : "2017/02/copeland-byelection"
+        },
+        {
+         "title": "Stoke 2015 widget",
+        "docData":"https://interactive.guim.co.uk/docsdata-test/1hKsB4nM_wwqdAIbOzT72SkqvmeJM37dZQds5F64vIqY.json",
+        "path": "2017/02/stoke-2015-results"
+        },
+        {   "title" : "Stoke byelection",
+        "docData" : "https://interactive.guim.co.uk/docsdata-test/1UXYwsgqiXbPSsTQM1fmSgGOgZuyFRMMsxvgSMV3IpYY.json",
+        "path" : "2017/02/stoke-byelection"}
+
+        
+
+    ]
+}

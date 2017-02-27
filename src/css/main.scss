@@ -1,0 +1,91 @@
+@import "mq";
+@import "fonts";
+
+// Uncomment for embeds
+@import "embed";
+
+// Uncomment for full screen (including immersive article main media)
+//@import "fullscreen";
+
+.element-atom,
+.interactive-atom {
+    margin: 0 !important;
+}
+
+.gv-elex-wrapper.liveblog {
+    padding-left: 80px;
+    padding-right: 15px;
+}
+
+.gv-elex-heading {
+    margin: 0 !important;
+}
+
+.gv-elex-subhead {
+    margin: 0 !important;
+    @include fs-bodyHeading(1);
+    color: #555;
+}
+
+.gv-elex-footer {
+    @include fs-textSans(1);
+    margin: 0 !important;
+      color: #555;
+ 
+}
+
+.gv-elex-bar {
+    height: 18px;
+}
+
+table {
+    width: 100%;
+}
+
+tr {
+    padding-top: 15px;
+    border: 1px solid black;
+}
+
+td {
+    @include fs-textSans(2);
+    vertical-align: top;
+    padding-right: 1px;
+    border-top: 1px solid #ccc;
+}
+
+th {
+    @include fs-textSans(1);
+    color: #666;
+}
+
+.gv-elex-candidate {
+    padding-right: 20px;
+}
+
+.gv-elex-result {
+    padding-bottom: 5px;
+    vertical-align: top;
+}
+
+.gv-elex-party {
+    font-weight: 700;
+    color: #333;
+    padding-right: 3px;
+}
+
+.gv-elex-candidatename {
+    color: #555;
+    padding-right: 3px;
+}
+
+.gv-elex-rule {
+    display: none;
+}
+
+.gv-elex-votes, .gv-elex-change {
+    text-align: right;
+    @include fs-textSans(1);
+}
+
+
