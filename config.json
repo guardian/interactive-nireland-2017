@@ -1,23 +1,9 @@
 {
    "title": "Stoke 2015 widget",
-        "docData":"https://interactive.guim.co.uk/docsdata-test/1hKsB4nM_wwqdAIbOzT72SkqvmeJM37dZQds5F64vIqY.json",
-        "path": "2017/02/stoke-2015-results",
+        "docData":"https://docs.google.com/spreadsheets/d/1UvSHRGXUT-ZFZgsO04n7rRh8TNC8udpoVQ5ffOQbTNw/edit#gid=0",
+        "docDataJson": "https://interactive.guim.co.uk/docsdata-test/1UvSHRGXUT-ZFZgsO04n7rRh8TNC8udpoVQ5ffOQbTNw.json",
+        "path": "2017/03/nireland-assembly",
         "previousexamples" : [
-        {
-        "title" : "Copeland byelection",
-        "docData" : "https://interactive.guim.co.uk/docsdata-test/1-XpF9OQ1k_eYx4XLT0JV1K6VtfNurQzEc5oRqjDzQYs.json",
-        "path" : "2017/02/copeland-byelection"
-        },
-        {
-         "title": "Stoke 2015 widget",
-        "docData":"https://interactive.guim.co.uk/docsdata-test/1hKsB4nM_wwqdAIbOzT72SkqvmeJM37dZQds5F64vIqY.json",
-        "path": "2017/02/stoke-2015-results"
-        },
-        {   "title" : "Stoke byelection",
-        "docData" : "https://interactive.guim.co.uk/docsdata-test/1UXYwsgqiXbPSsTQM1fmSgGOgZuyFRMMsxvgSMV3IpYY.json",
-        "path" : "2017/02/stoke-byelection"}
-
-        
-
+       
     ]
 }

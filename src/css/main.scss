@@ -7,6 +7,16 @@
 // Uncomment for full screen (including immersive article main media)
 //@import "fullscreen";
 
+$dup-colour:#99002E;
+$sf-colour: #7EAA58;
+$sdlp-colour:#008587;
+$uup-colour: #203360;
+$alliance-colour:#F2D303;
+$tuv-colour: #B3B3B4 ;
+$green-colour: #B3B3B4;
+$pbp-colour: #B3B3B4;
+
+
 .element-atom,
 .interactive-atom {
     margin: 0 !important;
@@ -34,9 +44,99 @@
  
 }
 
-.gv-elex-bar {
-    height: 18px;
+.gv-summary {
+    display: inline-block;
+    &#sf {
+        float:right;
+    }
+    &#dup {
+        float:left;
+    }
 }
+
+.gv-party-seat.gv-DUP > path {
+    fill: $dup-colour;
+}
+.gv-party-seat.gv-SF > path {
+    fill: $sf-colour;
+}
+.gv-party-seat.gv-UUP > path {
+    fill: $uup-colour;
+}
+.gv-party-seat.gv-SDLP > path {
+    fill: $sdlp-colour;
+}
+
+.gv-elex-chamber-wrapper {
+    clear: both;
+    display: block;
+    height: 20px;
+    width: 100%;
+}
+
+g > text, g > text > tspan {
+      text-shadow:
+        -1px -1px 0 #fff,  
+        1px -1px 0 #fff,
+        -1px 1px 0 #fff,
+        1px 1px 0 #fff;
+}
+
+.gv-elex-summary-wrapper {
+    margin: 1px;
+    display: block;
+    clear: both;
+}
+
+
+.gv-elex-bar {
+    .gv-elex-chamber & {
+        display: inline-block;
+        margin: 0px !important;
+        &.gv-SF {
+           float:right; 
+        };
+        &.gv-SDLP {
+           float:right; 
+        };
+         &.gv-DUP {
+           float:left; 
+        };
+        &.gv-UUP {
+           float:left; 
+        };
+    };
+    height: 18px;
+    &.gv-DUP {
+        background-color: $dup-colour;
+    }
+    &.gv-SF {
+        background-color: $sf-colour;
+    }
+    &.gv-UUP {
+        background-color: $uup-colour;
+    }
+    &.gv-SDLP {
+        background-color: $sdlp-colour;
+    }
+    &.gv-Alliance {
+        background-color: $alliance-colour;
+    }
+
+}
+
+// .gv-elex-bar.gv-DUP {background-color: $dup-colour; }
+.gv-elex-bar.gv-SF {background-color: $sf-colour; }
+.gv-elex-bar.gv-UUP {background-color: $uup-colour; }
+.gv-elex-bar.gv-SDLP {background-color: $sdlp-colour; }
+.gv-elex-bar.gv-Alliance {background-color: $alliance-colour; }
+.gv-elex-bar.gv-TUV {background-color: $tuv-colour; }
+
+.gv-party-seat > path {
+    fill: slategrey;
+}
+
+
 
 table {
     width: 100%;
