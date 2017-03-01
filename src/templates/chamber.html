@@ -7,9 +7,11 @@
 </div>
 <div class="gv-elex-chamber-wrapper">
 {{#.}}
+    {{#hasSeats}}
 <div class="gv-elex-bar gv-{{party}}" style="width:{{seatshare}}%"></div>
+    {{/hasSeats}}
 {{/.}}
-</div>
+<div class="gv-halfway-line"><span>55 seats for a majority</span></div>
 <div class="gv-elex-legend">
     {{#.}}
     {{#hasSeats}}
@@ -17,3 +19,4 @@
     <div class="gv-elex-blob gv-{{party}}"></div>{{displayname}}</div>
     {{/hasSeats}}
     {{/.}}</div>
+    </div>

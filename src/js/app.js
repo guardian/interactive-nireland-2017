@@ -9,6 +9,7 @@ import mapsvg from './../templates/cartogram_600.html';
 import mobmapsvg from './../templates/cartogram_300.html';
 import chambertemplate from './../templates/chamber.html';
 
+const totalseats = 108;
 var constituencies;
 
 function isMobile() {
@@ -25,8 +26,13 @@ function isliveblog() {
 }
 
 function cleannumber(input) {
-    input = input.replace(/,/g, "");
+    if (typeof input == "string" )
+{    input = input.replace(/,/g, "");
     return parseFloat(input);
+}
+    if (typeof input == "number") {
+        return input;
+    }
 }
 
 function ordercandidates(candidates) {
@@ -36,18 +42,13 @@ function ordercandidates(candidates) {
     var winner = candidates[0];
     //calc bar widths
     candidates = candidates.map(function (c) {
-        //add flags for DUP and SF
-        if (c.party == "DUP") { c.dup = true };
-        if (c.party == "SF") { c.sf = true };
-        //add flag for parties that have seats (for legend)
-        if (cleannumber(c.seats) > 0) { c.hasSeats = true }
+
         c.changevalue = cleannumber(c.change);
         if (c.changevalue > 0) {
             c.change = "+" + c.change;
         }
         c.fraction = cleannumber(c.seats) / cleannumber(winner.seats);
         c.width = (100 * c.fraction) + "%";
-        c.seatshare = 100 * (cleannumber(c.seats) / 106);
         return c;
     });
  //   console.log(candidates);
@@ -106,17 +107,53 @@ function applyMapShading(constituencies) {
 
 }
 
+function chartcandidates(candidates) {
+    var groupedcandidates = candidates;
+    var others = {
+        "party" : "Others",
+        "displayname" : "Others",
+        "seats" : 0,
+        "seatshare" : 0
+    }
+    groupedcandidates.forEach(function combineothers(p){
+        if (p.party != "DUP" && p.party != "SF" && p.party != "UUP" && p.party != "SDLP" && p.party != "Alliance") {
+        others.seats = others.seats + cleannumber(p.seats);
+        p.grouped = true;
+        } 
+    })
+    groupedcandidates.push(others);
+            //add flag for parties that have seats (for legend)
+    groupedcandidates.map(function(c) {
+        if (cleannumber(c.seats) > 0 && c.grouped != true) { c.hasSeats = true };
+                //add flags for DUP and SF
+        if (c.party == "DUP") { c.dup = true };
+        if (c.party == "SF") { c.sf = true };
+        c.grouped ? c.seatshare = 0 : c.seatshare = (100 * (cleannumber(c.seats) / totalseats));
+        return c;
+    })  
+    var summedseatshare = 0;      
+    groupedcandidates.forEach(function sumseatshares (x) {
+        summedseatshare += x.seatshare;
+    })    
+    console.log(summedseatshare);
+    console.log(groupedcandidates);
+
+
+    return groupedcandidates;
+}
+
 xr.get(config.docDataJson).then((resp) => {
     //compile data into elements needed for mustache templates
     var sheets = resp.data.sheets;
-    var candidates = ordercandidates(sheets.results);
+    var fullcandidates = ordercandidates(sheets.results);
+    var groupedcandidates = chartcandidates(sheets.results);
     constituencies = orderconstituencies(sheets.constituencies);
     var furniture = sheets.furniture[0];
 
     //compile mustache templates
     var headerhtml = Mustache.render(headertemplate, furniture)
-    var charthtml = Mustache.render(charttemplate, candidates);
-    var chamberhtml = Mustache.render(chambertemplate, candidates);
+    var charthtml = Mustache.render(charttemplate, fullcandidates);
+    var chamberhtml = Mustache.render(chambertemplate, groupedcandidates);
     var maphtml = Mustache.render(maptemplate, constituencies)
     var footerhtml = Mustache.render(footertemplate, furniture)
 

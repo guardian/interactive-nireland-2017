@@ -15,16 +15,27 @@ $alliance-colour:#ffb900;
 $tuv-colour: #dadada ;
 $green-colour: #dadada;
 $pbp-colour: #dadada;
+$others-colour: #dadada;
 
 
 .element-atom,
 .interactive-atom {
     margin: 0 !important;
+   
 }
 
-.gv-elex-wrapper.liveblog {
-    padding-left: 80px;
-    padding-right: 15px;
+.gv-elex-wrapper{
+    max-width: 620px;
+    @media (min-width: 980px) {
+        padding-right: 320px !important;
+    }
+
+    @media (min-width: 1140px) {
+        padding-left: 160px !important;
+    }
+    @media (min-width: 1300px){
+        padding-left: 240px !important;
+    }
 }
 
 .gv-elex-heading {
@@ -45,7 +56,17 @@ $pbp-colour: #dadada;
 }
 
 .gv-summary {
+
+    h3 {
+       @include f-textSans;
+    color: #333;
+    font-size: 24px;
+    line-height: 28px;
+    
+    }
+
     display: inline-block;
+    @include fs-data(3);
     &#sf {
         float:right;
     }
@@ -54,6 +75,9 @@ $pbp-colour: #dadada;
     }
 }
 
+.gv-elex-chamber {
+    background-color: #eee;
+}
 
 .gv-party-seat.gv-DUP > path {
     fill: $dup-colour;
@@ -116,13 +140,51 @@ h3 {
     @include fs-data(2);
 }
 
+.gv-elex-legend {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    clear: both;
+}
 
+.gv-halfway-line {
+    @include fs-data(1);
+    position: relative;
+    text-align:center;
+
+    ::before {
+    content: '';
+    display: block;
+    position: absolute;
+    border: 0;
+    border-left: 1px solid #767676;
+    left: 50%;
+    top: -7px;
+    height: 8px;
+    }
+}
+
+.gv-elex-map {
+    display: block;
+    margin-top: 45px;
+    clear: both;
+}
+
+.gv-elex-svg {
+    margin-top: 15px;
+}
+
+.gv-elex-chamber {
+    margin-bottom: 5px;
+    clear: both;
+}
 
 .gv-elex-chamber-wrapper {
+    display: block;
     height: 50px;
     background-color: #ECECEC;
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFAQMAAAC3obSmAAAABlBMVEUAAACOjo7hzJSnAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQffCRIOGhhxY7a4AAAAHWlUWHRDb21tZW50AAAAAABDcmVhdGVkIHdpdGggR0lNUGQuZQcAAAASSURBVAjXY+BgEGBQYHBgaAAAAqIA+YOVR0gAAAAASUVORK5CYII=');
     background-repeat: repeat;
+    margin-bottom: 35px;
 }
 
 .gv-elex-bar {
@@ -148,13 +210,11 @@ h3 {
         &.gv-PBP {
            float:right;
         }; 
-   
         &.gv-Green {
            float:right;
-        }; 
-   
-        &.gv-Green {
-           float:right;            
+        };    
+        &.gv-Others {
+           float:left;            
         };
     };
     height: 18px;
@@ -179,6 +239,9 @@ h3 {
         &.gv-TUV {
         background-color: $tuv-colour;
     }
+        &.gv-Others {
+        background-color: $others-colour;
+    }
 
 }
 
@@ -187,6 +250,7 @@ h3 {
     width: 10px;
     height: 10px;
     margin-right: 2px;
+    border-radius: 2px 2px 2px 2px;
 }
 
 // .gv-elex-bar.gv-DUP {background-color: $dup-colour; }
@@ -198,6 +262,7 @@ h3 {
 .gv-elex-bar.gv-TUV, .gv-elex-blob.gv-TUV {background-color: $tuv-colour; }
 .gv-elex-bar.gv-Green, .gv-elex-blob.gv-Green {background-color: $green-colour; }
 .gv-elex-bar.gv-PBP, .gv-elex-blob.gv-PBP {background-color: $pbp-colour; }
+.gv-elex-bar.gv-Others, .gv-elex-blob.gv-Others {background-color: $others-colour; }
 
 .gv-party-seat > path {
     fill: slategrey;
