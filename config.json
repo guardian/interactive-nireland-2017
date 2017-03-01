@@ -1,9 +1,24 @@
 {
-   "title": "Northern Ireland Assembly Elections 2107",
+                   "title": "Northern Ireland Assembly Elections 2016",
+        "docData":"https://docs.google.com/spreadsheets/d/1GsolFyh_osUgADd6mHLXP13FwH4uelTmpSUJb-Tkvpw/edit#gid=0",
+        "docDataJson": "https://interactive.guim.co.uk/docsdata-test/1GsolFyh_osUgADd6mHLXP13FwH4uelTmpSUJb-Tkvpw.json",
+        "path": "2017/03/testing/nireland-assembly",
+        "testingversionsetc" : [ 
+
+            {
+                   "title": "Northern Ireland Assembly Elections 2016",
+        "docData":"https://docs.google.com/spreadsheets/d/1GsolFyh_osUgADd6mHLXP13FwH4uelTmpSUJb-Tkvpw/edit#gid=0",
+        "docDataJson": "https://interactive.guim.co.uk/docsdata-test/1GsolFyh_osUgADd6mHLXP13FwH4uelTmpSUJb-Tkvpw.json",
+        "path": "2017/03/testing/nireland-assembly"
+            },
+            {
+                   "title": "Northern Ireland Assembly Elections 2017",
         "docData":"https://docs.google.com/spreadsheets/d/1UvSHRGXUT-ZFZgsO04n7rRh8TNC8udpoVQ5ffOQbTNw/edit#gid=0",
         "docDataJson": "https://interactive.guim.co.uk/docsdata-test/1UvSHRGXUT-ZFZgsO04n7rRh8TNC8udpoVQ5ffOQbTNw.json",
-        "path": "2017/03/nireland-assembly",
-        "previousexamples" : [
+        "path": "2017/03/nireland-assembly"
+            }
+
+
        
     ]
 }

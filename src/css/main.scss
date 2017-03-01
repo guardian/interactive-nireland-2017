@@ -10,7 +10,6 @@
 $dup-colour:#99002E;
 $sf-colour: #7EAA58;
 $sdlp-colour:#008587;
-// $uup-colour: #203360;
 $uup-colour: #203360;
 $alliance-colour:#ffb900;
 $tuv-colour: #dadada ;
@@ -79,14 +78,23 @@ $pbp-colour: #dadada;
     width: 100%;
 }
 
-g > text, g > text > tspan {
+
+g > text, g > text > tspan {  
     @include fs-headline(1);
+    @media (min-width: 620px) {
     fill: white;
       text-shadow:
         -1px -1px 0 #666,  
         1px -1px 0 #666,
         -1px 1px 0 #666,
         1px 1px 0 #666;
+    }
+    fill: black;
+      text-shadow:
+        -1px -1px 0 #ddd,  
+        1px -1px 0 #ddd,
+        -1px 1px 0 #ddd,
+        1px 1px 0 #ddd;
 }
 
 .gv-elex-summary-wrapper {
@@ -183,7 +191,8 @@ h3 {
 
 // .gv-elex-bar.gv-DUP {background-color: $dup-colour; }
 .gv-elex-bar.gv-SF, .gv-elex-blob.gv-SF, {background-color: $sf-colour; }
-.gv-elex-bar.gv-UUP, .gv-elex-blob.gv-DUP {background-color: $uup-colour; }
+.gv-elex-bar.gv-DUP, .gv-elex-blob.gv-DUP {background-color: $dup-colour; }
+.gv-elex-bar.gv-UUP, .gv-elex-blob.gv-UUP {background-color: $uup-colour; }
 .gv-elex-bar.gv-SDLP, .gv-elex-blob.gv-SDLP  {background-color: $sdlp-colour; }
 .gv-elex-bar.gv-Alliance, .gv-elex-blob.gv-Alliance {background-color: $alliance-colour; }
 .gv-elex-bar.gv-TUV, .gv-elex-blob.gv-TUV {background-color: $tuv-colour; }
@@ -202,11 +211,15 @@ h3 {
 #belfast_x5F_border, #all_x5F_constit_x5F_border {
     stroke: #fff;
     stroke-width: 5px;
+    z-index: -9;
 }
 
 #all_x5F_constit_x5F_border > polygon { 
     stroke: #fff;
-    stroke-width: 3px;}
+    stroke-width: 3px;
+    z-index: -9;
+    }
+
 
 table {
     border:none;

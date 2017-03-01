@@ -1,6 +1,7 @@
 import xr from 'xr'
 import config from './../../config.json'
 import Mustache from 'mustache'
+import headertemplate from './../templates/header.html'
 import charttemplate from './../templates/chart.html'
 import footertemplate from './../templates/footer.html'
 import maptemplate from './../templates/map.html'
@@ -49,7 +50,7 @@ function ordercandidates(candidates) {
         c.seatshare = 100 * (cleannumber(c.seats) / 106);
         return c;
     });
-    console.log(candidates);
+ //   console.log(candidates);
     return candidates;
 }
 
@@ -106,31 +107,33 @@ function applyMapShading(constituencies) {
 }
 
 xr.get(config.docDataJson).then((resp) => {
+    //compile data into elements needed for mustache templates
     var sheets = resp.data.sheets;
     var candidates = ordercandidates(sheets.results);
     constituencies = orderconstituencies(sheets.constituencies);
+    var furniture = sheets.furniture[0];
 
-    // render just the html for the blocks
+    //compile mustache templates
+    var headerhtml = Mustache.render(headertemplate, furniture)
     var charthtml = Mustache.render(charttemplate, candidates);
     var chamberhtml = Mustache.render(chambertemplate, candidates);
-
     var maphtml = Mustache.render(maptemplate, constituencies)
+    var footerhtml = Mustache.render(footertemplate, furniture)
 
-    var footerhtml = Mustache.render(footertemplate, sheets.furniture[0])
-
-    // inject that rendered html into the empty div we declared in main.html
-    document.querySelector(".gv-elex-heading").innerHTML = sheets.furniture[0].heading;
-    document.querySelector(".gv-elex-subhead").innerHTML = sheets.furniture[0].subheading;
+    // inject rendered mustache html into the empty divs we declared in main.html
+    document.querySelector(".gv-elex-heading-wrapper").innerHTML = headerhtml;
     document.querySelector(".gv-elex-footer").innerHTML = footerhtml;
     document.querySelector(".gv-elex-results").innerHTML = charthtml;
     document.querySelector(".gv-elex-chamber").innerHTML = chamberhtml;
-    if (isliveblog() == true) {
-        document.querySelector(".gv-elex-wrapper").classList.add("liveblog");
-    }
+
+    // get the appropriate map size
     if (isMobile() !== true) {
         document.querySelector(".gv-elex-map").innerHTML = mapsvg;
     } else { document.querySelector(".gv-elex-map").innerHTML = mobmapsvg; }
+
+    //colour the map
     applyMapShading(constituencies);
+
     window.resize();
 
 
@@ -138,14 +141,14 @@ xr.get(config.docDataJson).then((resp) => {
 });
 
 
-    function replaceMap() {
+function replaceMap() {
 
-        if (isMobile() !== true) {
-            document.querySelector(".gv-elex-map").innerHTML = mapsvg;
-        } else { document.querySelector(".gv-elex-map").innerHTML = mobmapsvg; }
+    if (isMobile() !== true) {
+        document.querySelector(".gv-elex-map").innerHTML = mapsvg;
+    } else { document.querySelector(".gv-elex-map").innerHTML = mobmapsvg; }
     applyMapShading(constituencies)
-    }
+}
 
-        window.onresize = replaceMap;
+window.onresize = replaceMap;
 
 
