@@ -5,7 +5,16 @@ import charttemplate from './../templates/chart.html'
 import footertemplate from './../templates/footer.html'
 import maptemplate from './../templates/map.html'
 import mapsvg from './../templates/cartogram_600.html';
+import mobmapsvg from './../templates/cartogram_300.html';
 import chambertemplate from './../templates/chamber.html';
+
+var constituencies;
+
+function isMobile() {
+    if (window.innerWidth < 620) {
+        return true;
+    }
+}
 
 function isliveblog() {
     var url = window.top.location.pathname;
@@ -29,6 +38,8 @@ function ordercandidates(candidates) {
         //add flags for DUP and SF
         if (c.party == "DUP") { c.dup = true };
         if (c.party == "SF") { c.sf = true };
+        //add flag for parties that have seats (for legend)
+        if (cleannumber(c.seats) > 0) { c.hasSeats = true }
         c.changevalue = cleannumber(c.change);
         if (c.changevalue > 0) {
             c.change = "+" + c.change;
@@ -38,14 +49,16 @@ function ordercandidates(candidates) {
         c.seatshare = 100 * (cleannumber(c.seats) / 106);
         return c;
     });
-//    console.log(candidates);
+    console.log(candidates);
     return candidates;
 }
 
 
+
+
 function orderconstituencies(constituencies) {
 
-    console.log(constituencies);
+    // console.log(constituencies);
 
     constituencies.forEach(function (s) {
 
@@ -63,7 +76,6 @@ function orderconstituencies(constituencies) {
 
         //end of the forEach for constituencies
     });
-    console.log(constituencies);
     return constituencies;
 }
 
@@ -73,40 +85,34 @@ function applyMapShading(constituencies) {
     constituencies.forEach(function (c) {
         //find the seat-level cells for this constituency
         c.mycells = cells.filter(function (x) { return x.id.match(c.map_id) && x.id.match("x5F") })
-          console.log("found " + c.mycells.length + " cells in " + c.constituency);
-  
+
         c.availablecells = c.mycells;
         //get each party in turn 
         c.parties.forEach(function (p) {
-            console.log("assigning " + p.value + " seats to " + p.name + " in " + c.constituency);
 
             //for this party's seats, apply classes until there are no seats left
             for (var i = 0; i < cleannumber(p.value); i++) {
                 //apply a class
                 if (c.availablecells.length > 0) {
-                 //         console.log(c.availablecells);
-                c.availablecells[0].classList.add("gv-" + p.name);
-                c.availablecells[0].classList.add("gv-party-seat");
-                c.availablecells.shift();
+                    c.availablecells[0].classList.add("gv-" + p.name);
+                    c.availablecells[0].classList.add("gv-party-seat");
+                    c.availablecells.shift();
                 }
             }
-           // console.log(c.availablecells);
-      
         })
-    console.log("found " + c.mycells.length + " cells in " + c.constituency);    
     })
-    
-  
+
+
 }
 
 xr.get(config.docDataJson).then((resp) => {
     var sheets = resp.data.sheets;
     var candidates = ordercandidates(sheets.results);
-    var constituencies = orderconstituencies(sheets.constituencies);
+    constituencies = orderconstituencies(sheets.constituencies);
 
     // render just the html for the blocks
-    var charthtml = Mustache.render(charttemplate,candidates);
-    var chamberhtml = Mustache.render(chambertemplate,candidates);
+    var charthtml = Mustache.render(charttemplate, candidates);
+    var chamberhtml = Mustache.render(chambertemplate, candidates);
 
     var maphtml = Mustache.render(maptemplate, constituencies)
 
@@ -121,10 +127,25 @@ xr.get(config.docDataJson).then((resp) => {
     if (isliveblog() == true) {
         document.querySelector(".gv-elex-wrapper").classList.add("liveblog");
     }
-    document.querySelector(".gv-elex-map").innerHTML = mapsvg;
+    if (isMobile() !== true) {
+        document.querySelector(".gv-elex-map").innerHTML = mapsvg;
+    } else { document.querySelector(".gv-elex-map").innerHTML = mobmapsvg; }
     applyMapShading(constituencies);
-// window.resize();
+    window.resize();
+
+
+
 });
 
+
+    function replaceMap() {
+
+        if (isMobile() !== true) {
+            document.querySelector(".gv-elex-map").innerHTML = mapsvg;
+        } else { document.querySelector(".gv-elex-map").innerHTML = mobmapsvg; }
+    applyMapShading(constituencies)
+    }
+
+        window.onresize = replaceMap;
 
 
