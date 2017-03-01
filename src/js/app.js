@@ -38,7 +38,7 @@ function ordercandidates(candidates) {
         c.seatshare = 100 * (cleannumber(c.seats) / 106);
         return c;
     });
-    console.log(candidates);
+//    console.log(candidates);
     return candidates;
 }
 
@@ -63,11 +63,8 @@ function orderconstituencies(constituencies) {
 
         //end of the forEach for constituencies
     });
-
-
-
+    console.log(constituencies);
     return constituencies;
-
 }
 
 function applyMapShading(constituencies) {
@@ -76,23 +73,30 @@ function applyMapShading(constituencies) {
     constituencies.forEach(function (c) {
         //find the seat-level cells for this constituency
         c.mycells = cells.filter(function (x) { return x.id.match(c.map_id) && x.id.match("x5F") })
+          console.log("found " + c.mycells.length + " cells in " + c.constituency);
+  
         c.availablecells = c.mycells;
         //get each party in turn 
         c.parties.forEach(function (p) {
+            console.log("assigning " + p.value + " seats to " + p.name + " in " + c.constituency);
 
             //for this party's seats, apply classes until there are no seats left
             for (var i = 0; i < cleannumber(p.value); i++) {
                 //apply a class
                 if (c.availablecells.length > 0) {
-                          console.log(c.availablecells);
-                c.availablecells[i].classList.add("gv-" + p.name);
-                c.availablecells[i].classList.add("gv-party-seat");
-                c.availablecells.splice(i,1);
-                console.log(c.availablecells);
+                 //         console.log(c.availablecells);
+                c.availablecells[0].classList.add("gv-" + p.name);
+                c.availablecells[0].classList.add("gv-party-seat");
+                c.availablecells.shift();
                 }
             }
+           // console.log(c.availablecells);
+      
         })
+    console.log("found " + c.mycells.length + " cells in " + c.constituency);    
     })
+    
+  
 }
 
 xr.get(config.docDataJson).then((resp) => {
@@ -119,7 +123,7 @@ xr.get(config.docDataJson).then((resp) => {
     }
     document.querySelector(".gv-elex-map").innerHTML = mapsvg;
     applyMapShading(constituencies);
-    //    window.resize();
+// window.resize();
 });
 
 
