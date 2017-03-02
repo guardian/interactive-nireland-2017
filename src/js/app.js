@@ -9,7 +9,7 @@ import mapsvg from './../templates/cartogram_600.html';
 import mobmapsvg from './../templates/cartogram_300.html';
 import chambertemplate from './../templates/chamber.html';
 
-const totalseats = 108;
+const totalseats = 90;
 var constituencies;
 
 function isMobile() {
