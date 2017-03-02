@@ -43,6 +43,10 @@ function ordercandidates(candidates) {
     //calc bar widths
     candidates = candidates.map(function (c) {
         if (cleannumber(c.seats) > 0) { c.chartable = true };
+        switch( cleannumber(c.seats)) {
+           case 1 : c.seatsmessage =   "1 seat"; break;
+            default : c.seatsmessage =   cleannumber(c.seats) + " seats";
+        }
         c.votesharevalue = cleannumber(c.voteshare);
         c.changevalue = cleannumber(c.change);
         if (c.changevalue > 0) {
@@ -129,6 +133,7 @@ function chartcandidates(candidates) {
                 //add flags for DUP and SF
         if (c.party == "DUP") { c.dup = true };
         if (c.party == "SF") { c.sf = true };
+        
         c.grouped ? c.seatshare = 0 : c.seatshare = (100 * (cleannumber(c.seats) / totalseats));
         return c;
     })  
