@@ -5,8 +5,8 @@ import headertemplate from './../templates/header.html'
 import charttemplate from './../templates/chart.html'
 import footertemplate from './../templates/footer.html'
 import maptemplate from './../templates/map.html'
-import mapsvg from './../templates/cartogram_600.html';
-import mobmapsvg from './../templates/cartogram_300.html';
+import mapsvg from './../templates/carto600new.html';
+import mobmapsvg from './../templates/carto300new.html';
 import chambertemplate from './../templates/chamber.html';
 
 const totalseats = 90;
@@ -42,7 +42,8 @@ function ordercandidates(candidates) {
     var winner = candidates[0];
     //calc bar widths
     candidates = candidates.map(function (c) {
-
+        if (cleannumber(c.seats) > 0) { c.chartable = true };
+        c.votesharevalue = cleannumber(c.voteshare);
         c.changevalue = cleannumber(c.change);
         if (c.changevalue > 0) {
             c.change = "+" + c.change;
@@ -116,7 +117,7 @@ function chartcandidates(candidates) {
         "seatshare" : 0
     }
     groupedcandidates.forEach(function combineothers(p){
-        if (p.party != "DUP" && p.party != "SF" && p.party != "UUP" && p.party != "SDLP" && p.party != "Alliance") {
+        if (p.party != "DUP" && p.party != "SF" && p.party != "UUP" && p.party != "SDLP" && p.party != "APNI") {
         others.seats = others.seats + cleannumber(p.seats);
         p.grouped = true;
         } 

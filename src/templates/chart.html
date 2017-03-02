@@ -4,9 +4,9 @@
     <tr>
         <th></th>
 
-        <th class="gv-elex-change">+/-</td>
+        <th class="gv-elex-change">2016¹</td>
 
-        <th class="gv-elex-votes">votes</th>
+        <th class="gv-elex-votes">vote share²</th>
     </tr>
 
 
@@ -15,13 +15,15 @@
         <td>
             <div class="gv-elex-result">
                 <div class="gv-elex-candidate">
-                     <span class="gv-elex-party">{{displayname}}  </span>   <span class="gv-elex-candidatename">{{candidate}}</span> <span class="gv-elex-share">{{seats}}</span></div>
+                     <span class="gv-elex-party">{{displayname}}  </span>   <span class="gv-elex-candidatename">{{candidate}}</span> <span class="gv-elex-share">{{seats}} seats</span></div>
+{{#chartable}}
                 <div class="gv-elex-bar gv-{{party}}" style="width:{{width}};"></div>
+{{/chartable}}
             </div>
         </td>
 
-        <td class="gv-elex-change">{{change}}</td>
-        <td class="gv-elex-votes">{{votes}}</td>
+        <td class="gv-elex-change">{{2016}}</td>
+        <td class="gv-elex-votes">{{votesharevalue}}%</td>
     </tr>
 
     {{/.}}

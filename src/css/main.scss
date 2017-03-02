@@ -91,7 +91,7 @@ $others-colour: #dadada;
 .gv-party-seat.gv-SDLP > path {
     fill: $sdlp-colour;
 }
-.gv-party-seat.gv-Alliance > path {
+.gv-party-seat.gv-APNI > path {
     fill: $alliance-colour;
 }
 
@@ -230,7 +230,7 @@ h3 {
     &.gv-SDLP {
         background-color: $sdlp-colour;
     }
-    &.gv-Alliance {
+    &.gv-APNI {
         background-color: $alliance-colour;
     }
         &.gv-green {
@@ -258,11 +258,12 @@ h3 {
 .gv-elex-bar.gv-DUP, .gv-elex-blob.gv-DUP {background-color: $dup-colour; }
 .gv-elex-bar.gv-UUP, .gv-elex-blob.gv-UUP {background-color: $uup-colour; }
 .gv-elex-bar.gv-SDLP, .gv-elex-blob.gv-SDLP  {background-color: $sdlp-colour; }
-.gv-elex-bar.gv-Alliance, .gv-elex-blob.gv-Alliance {background-color: $alliance-colour; }
+.gv-elex-bar.gv-APNI, .gv-elex-blob.gv-APNI {background-color: $alliance-colour; }
 .gv-elex-bar.gv-TUV, .gv-elex-blob.gv-TUV {background-color: $tuv-colour; }
 .gv-elex-bar.gv-Green, .gv-elex-blob.gv-Green {background-color: $green-colour; }
 .gv-elex-bar.gv-PBP, .gv-elex-blob.gv-PBP {background-color: $pbp-colour; }
 .gv-elex-bar.gv-Others, .gv-elex-blob.gv-Others {background-color: $others-colour; }
+.gv-elex-bar {background-color: $others-colour; }
 
 .gv-party-seat > path {
     fill: slategrey;
