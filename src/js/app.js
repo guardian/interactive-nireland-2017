@@ -136,10 +136,6 @@ function chartcandidates(candidates) {
     groupedcandidates.forEach(function sumseatshares (x) {
         summedseatshare += x.seatshare;
     })    
-    console.log(summedseatshare);
-    console.log(groupedcandidates);
-
-
     return groupedcandidates;
 }
 
