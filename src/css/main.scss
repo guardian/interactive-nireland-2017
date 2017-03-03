@@ -24,6 +24,10 @@ $others-colour: #dadada;
    
 }
 
+.gv-elex-results {
+    margin-top: 20px;
+}
+
 .gv-elex-wrapper{
     max-width: 620px;
     @media (min-width: 980px) {
@@ -50,7 +54,7 @@ $others-colour: #dadada;
 
 .gv-elex-footer {
     @include fs-textSans(1);
-    margin: 0 !important;
+    margin: 0 0 30px 0!important;
       color: #555;
  
 }
@@ -112,6 +116,16 @@ g > text, g > text > tspan {
         1px -1px 0 #666,
         -1px 1px 0 #666,
         1px 1px 0 #666;
+
+                &.fermanagh {
+    fill: black;
+      text-shadow:
+        -1px -1px 0 #ddd,  
+        1px -1px 0 #ddd,
+        -1px 1px 0 #ddd,
+        1px 1px 0 #ddd;
+            
+        }
     }
     fill: black;
       text-shadow:
@@ -119,6 +133,8 @@ g > text, g > text > tspan {
         1px -1px 0 #ddd,
         -1px 1px 0 #ddd,
         1px 1px 0 #ddd;
+
+
 }
 
 .gv-elex-summary-wrapper {
